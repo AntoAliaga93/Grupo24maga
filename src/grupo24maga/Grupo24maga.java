@@ -28,13 +28,22 @@ public class Grupo24maga {
       alu.eliminarAlumno(1); */
       
       //Buscar alumno
-      AlumnoData alu = new AlumnoData();
+     /* AlumnoData alu = new AlumnoData();
       Alumno alumnoEncontrado =  alu.buscarAlumno(1);
       if(alumnoEncontrado !=null){
       System.out.println("dni"+alumnoEncontrado.getDni());
       System.out.println("apellido"+alumnoEncontrado.getApellido());
       System.out.println("nombre"+alumnoEncontrado.getNombre());
-      }
+      } */
+     
+     //Listar alumno
+     AlumnoData alu = new AlumnoData();
+        for (Alumno alumno : alu.listarAlumnos()) {
+            System.out.println(alumno.getDni());
+            System.out.println(alumno.getApellido());
+            System.out.println(alumno.getNombre());
+            System.out.println(alumno.getFechaNac());
+        }
     }
     
 }

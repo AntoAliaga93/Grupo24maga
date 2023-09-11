@@ -3,7 +3,9 @@ package grupo24maga;
 
 import grupo24maga.AccesoADatos.AlumnoData;
 import grupo24maga.AccesoADatos.Conexion;
+import grupo24maga.AccesoADatos.MateriaData;
 import grupo24maga.Entidades.Alumno;
+import grupo24maga.Entidades.Materia;
 import java.sql.Connection;
 import java.time.LocalDate;
 
@@ -37,13 +39,46 @@ public class Grupo24maga {
       } */
      
      //Listar alumno
-     AlumnoData alu = new AlumnoData();
+    /* AlumnoData alu = new AlumnoData();
         for (Alumno alumno : alu.listarAlumnos()) {
             System.out.println(alumno.getDni());
             System.out.println(alumno.getApellido());
             System.out.println(alumno.getNombre());
             System.out.println(alumno.getFechaNac());
         }
-    }
-    
+        */
+    //---------------------------------------------------------
+    //Guardar materia
+   /* Materia materia = new Materia("Matemática", 2020, true);
+    //para guardarlo en la base de datos
+    MateriaData mat=new MateriaData();
+    mat.guardarMateria(materia); */
+   
+   //Buscar materia
+   /*MateriaData materia = new MateriaData();
+   Materia materiaEncontrada =  materia.buscarMateria(1);
+      if(materiaEncontrada !=null){
+      System.out.println("nombre "+materiaEncontrada.getNombre());
+      System.out.println("año "+materiaEncontrada.getAnioMateria());
+      System.out.println("estado "+materiaEncontrada.isActivo());
+      } */
+   
+   //Modificar materia
+   /*Materia materia = new Materia(1,"Musica", 2020, true);
+   MateriaData mat=new MateriaData();
+   mat.modificarMateria(materia); */
+  
+  //Eliminar materia
+  /*Materia materia = new Materia(1,"Musica", 2020, true);
+  MateriaData mat=new MateriaData();
+  mat.eliminarMateria(1); */
+  
+    //Listar materias
+    MateriaData mat = new MateriaData();
+        for (Materia materia : mat.listarMaterias()) {
+            System.out.println(materia.getNombre());
+            System.out.println(materia.getAnioMateria());
+            System.out.println(materia.isActivo());
+        }
+    }   
 }

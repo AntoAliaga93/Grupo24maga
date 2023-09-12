@@ -3,8 +3,10 @@ package grupo24maga;
 
 import grupo24maga.AccesoADatos.AlumnoData;
 import grupo24maga.AccesoADatos.Conexion;
+import grupo24maga.AccesoADatos.InscripcionData;
 import grupo24maga.AccesoADatos.MateriaData;
 import grupo24maga.Entidades.Alumno;
+import grupo24maga.Entidades.Inscripcion;
 import grupo24maga.Entidades.Materia;
 import java.sql.Connection;
 import java.time.LocalDate;
@@ -20,9 +22,9 @@ public class Grupo24maga {
     //   alu.guardarAlumno(alumno);
        
        //Modificar alumno
-      /* Alumno alumno = new Alumno(1,38564621,"Sanchez","Juliana",LocalDate.of(1994, 3, 12),true);
-       AlumnoData alu=new AlumnoData();
-       alu.modificarAlumno(alumno);*/
+      Alumno alumno = new Alumno(1,38564621,"Sanchez","Juliana",LocalDate.of(1994, 3, 12),true);
+      // AlumnoData alu=new AlumnoData();
+       //alu.modificarAlumno(alumno);*/
       
       //Eliminar alumno
      /* Alumno alumno = new Alumno(1,38564621,"Sanchez","Juliana",LocalDate.of(1994, 3, 12),true);
@@ -64,9 +66,9 @@ public class Grupo24maga {
       } */
    
    //Modificar materia
-   /*Materia materia = new Materia(1,"Musica", 2020, true);
-   MateriaData mat=new MateriaData();
-   mat.modificarMateria(materia); */
+   Materia materia = new Materia(1,"Musica", 2020, true);
+  // MateriaData mat=new MateriaData();
+   //mat.modificarMateria(materia); */
   
   //Eliminar materia
   /*Materia materia = new Materia(1,"Musica", 2020, true);
@@ -74,11 +76,17 @@ public class Grupo24maga {
   mat.eliminarMateria(1); */
   
     //Listar materias
-    MateriaData mat = new MateriaData();
+   /* MateriaData mat = new MateriaData();
         for (Materia materia : mat.listarMaterias()) {
             System.out.println(materia.getNombre());
             System.out.println(materia.getAnioMateria());
             System.out.println(materia.isActivo());
-        }
+        } */
+   //---------------------------------------------------------------------
+   //Guardar inscripción
+   
+   Inscripcion inscripcion = new Inscripcion(alumno, materia, 8);
+   InscripcionData insc = new InscripcionData();
+   insc.guardarInscripcion(inscripcion, alumno, materia);
     }   
 }

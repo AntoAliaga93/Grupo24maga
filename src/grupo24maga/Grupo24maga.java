@@ -10,6 +10,7 @@ import grupo24maga.Entidades.Inscripcion;
 import grupo24maga.Entidades.Materia;
 import java.sql.Connection;
 import java.time.LocalDate;
+import java.util.List;
 
 
 public class Grupo24maga {
@@ -22,7 +23,7 @@ public class Grupo24maga {
     //   alu.guardarAlumno(alumno);
        
        //Modificar alumno
-      Alumno alumno = new Alumno(1,38564621,"Sanchez","Juliana",LocalDate.of(1994, 3, 12),true);
+     // Alumno alumno = new Alumno(1,38564621,"Sanchez","Juliana",LocalDate.of(1994, 3, 12),true);
       // AlumnoData alu=new AlumnoData();
        //alu.modificarAlumno(alumno);*/
       
@@ -66,7 +67,7 @@ public class Grupo24maga {
       } */
    
    //Modificar materia
-   Materia materia = new Materia(1,"Musica", 2020, true);
+  // Materia materia = new Materia(1,"Musica", 2020, true);
   // MateriaData mat=new MateriaData();
    //mat.modificarMateria(materia); */
   
@@ -84,9 +85,44 @@ public class Grupo24maga {
         } */
    //---------------------------------------------------------------------
    //Guardar inscripción
+   //Alumno alumno = new Alumno(1,38564621,"Sanchez","Juliana",LocalDate.of(1994, 3, 12),true);
+  // Materia materia = new Materia(1,"Musica", 2020, true);
+  // Inscripcion inscripcion = new Inscripcion(alumno, materia, 8);
+   //InscripcionData insc = new InscripcionData();
+   //insc.guardarInscripcion(inscripcion); */
+  
+   //Obtener inscripciones
+   /*InscripcionData insc_d = new InscripcionData();
+    List<Inscripcion> inscripciones = insc_d.obtenerInscripciones();
+
+        for (Inscripcion insc : inscripciones) {
+           
+            System.out.println("idInscripción: "+insc.getIdInscripcion());
+            System.out.println("Nota: " + insc.getNota());
+            System.out.println("idAlumno: " + insc.getAlumno().getIdAlumno());
+            System.out.println("idMateria: "+insc.getMateria().getIdMateria());
+           
+        } */
    
-   Inscripcion inscripcion = new Inscripcion(alumno, materia, 8);
-   InscripcionData insc = new InscripcionData();
-   insc.guardarInscripcion(inscripcion, alumno, materia);
-    }   
+    //Obtener inscripciones por Alumno
+  /*  InscripcionData insc_d = new InscripcionData();
+    List<Inscripcion> inscripciones = insc_d.obtenerInscripcionesPorAlumno(1);
+        for (Inscripcion insc : inscripciones) {
+           
+            System.out.println("idInscripción: "+insc.getIdInscripcion());
+            System.out.println("Nota: " + insc.getNota());
+            System.out.println("idAlumno: " + insc.getAlumno().getIdAlumno());
+            System.out.println("idMateria: "+insc.getMateria().getIdMateria());
+           
+        } */
+    //Obtener Materias Cursadas
+    InscripcionData insc_d = new InscripcionData();
+    List<Materia> materias = insc_d.obtenerMateriasCursadas(1);
+        for (Materia m : materias) {
+           
+            System.out.println("idMateria: "+m.getIdMateria());
+            System.out.println("Nombre: "+m.getNombre());
+            System.out.println("Año: "+m.getAnioMateria());
+        }
+    }    
 }

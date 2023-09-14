@@ -84,12 +84,12 @@ public class Grupo24maga {
             System.out.println(materia.isActivo());
         } */
    //---------------------------------------------------------------------
-   //Guardar inscripción
-   //Alumno alumno = new Alumno(1,38564621,"Sanchez","Juliana",LocalDate.of(1994, 3, 12),true);
-  // Materia materia = new Materia(1,"Musica", 2020, true);
-  // Inscripcion inscripcion = new Inscripcion(alumno, materia, 8);
-   //InscripcionData insc = new InscripcionData();
-   //insc.guardarInscripcion(inscripcion); */
+  // Guardar inscripción
+//   Alumno alumno = new Alumno(1,38564621,"Sanchez","Juliana",LocalDate.of(1994, 3, 12),true);
+//   Materia materia = new Materia(1,"Musica", 2020, true);
+//   Inscripcion inscripcion = new Inscripcion(alumno, materia, 8);
+//   InscripcionData insc = new InscripcionData();
+//   insc.guardarInscripcion(inscripcion); 
   
    //Obtener inscripciones
    /*InscripcionData insc_d = new InscripcionData();
@@ -116,13 +116,29 @@ public class Grupo24maga {
            
         } */
     //Obtener Materias Cursadas
-    InscripcionData insc_d = new InscripcionData();
-    List<Materia> materias = insc_d.obtenerMateriasCursadas(1);
+    /*  InscripcionData insc_d = new InscripcionData();
+        List<Materia> materias = insc_d.obtenerMateriasCursadas(1);
         for (Materia m : materias) {
            
             System.out.println("idMateria: "+m.getIdMateria());
             System.out.println("Nombre: "+m.getNombre());
             System.out.println("Año: "+m.getAnioMateria());
-        }
+        } */
+    //Obtener Materias NO Cursadas
+       /* InscripcionData insc_d = new InscripcionData();
+        List<Materia> materiasNoCursadas = insc_d.obtenerMateriasNoCursadas(1);
+        for (Materia m : materiasNoCursadas) {
+            System.out.println("Nombre: "+m.getNombre());
+        }  */
+       
+    //Borrar inscripción materia Alumno   
+    /*InscripcionData insc = new InscripcionData();
+      insc.borrarInscripcionMateriaAlumno(1, 1);  */
+    
+    //Actualizar nota
+    /*InscripcionData insc_d = new InscripcionData();
+      insc_d.actualizarNota(1, 1, 10); */
+    
+    
     }    
 }

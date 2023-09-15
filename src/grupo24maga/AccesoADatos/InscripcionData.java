@@ -179,4 +179,29 @@ public class InscripcionData {
             JOptionPane.showMessageDialog(null, "Error al acceder  a la tabla inscripción");
         }
     }
+    public List<Alumno> obtenerAlumnosXMateria(int idMateria){
+        List<Alumno>alumno = new ArrayList<Alumno>();
+        String sql = "SELECT a.idAlumno, dni, apellido, a.nombre FROM alumno a JOIN inscripcion i "
+             + " ON i.idAlumno = a.idAlumno JOIN materia m "
+                + " WHERE m.idMateria = ? ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idMateria);
+            ResultSet rs = ps.executeQuery();
+            Alumno alumnos;
+            while(rs.next()){
+               alumnos = new Alumno();
+               alumnos.setIdAlumno(rs.getInt("idAlumno"));
+               alumnos.setDni(rs.getInt("dni"));
+               alumnos.setApellido(rs.getString("apellido"));
+               alumnos.setNombre(rs.getString("nombre"));
+               alumno.add(alumnos);
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "Error al obtener alumnos");
+        }
+       return alumno;
+    }
 }

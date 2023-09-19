@@ -179,6 +179,7 @@ public class InscripcionData {
             JOptionPane.showMessageDialog(null, "Error al acceder  a la tabla inscripción");
         }
     }
+    
     public List<Alumno> obtenerAlumnosXMateria(int idMateria){
         List<Alumno>alumno = new ArrayList<Alumno>();
         String sql = "SELECT a.idAlumno, dni, apellido, a.nombre FROM alumno a JOIN inscripcion i "

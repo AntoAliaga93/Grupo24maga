@@ -34,8 +34,8 @@ public class Menu extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMFmat = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        jMInscripciones = new javax.swing.JMenuItem();
+        jmManipNot = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
@@ -85,11 +85,21 @@ public class Menu extends javax.swing.JFrame {
 
         jMenu3.setText("Administración");
 
-        jMenuItem3.setText("Manejo de inscripciones");
-        jMenu3.add(jMenuItem3);
+        jMInscripciones.setText("Manejo de inscripciones");
+        jMInscripciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMInscripcionesActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMInscripciones);
 
-        jMenuItem4.setText("Manipulacion de notas");
-        jMenu3.add(jMenuItem4);
+        jmManipNot.setText("Manipulacion de notas");
+        jmManipNot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmManipNotActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jmManipNot);
 
         jMenuBar1.add(jMenu3);
 
@@ -141,6 +151,24 @@ public class Menu extends javax.swing.JFrame {
        
     }//GEN-LAST:event_jMAlumActionPerformed
 
+    private void jMInscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMInscripcionesActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        FormularioInscripcion fi = new FormularioInscripcion();
+        fi.setVisible(true);
+        escritorio.add(fi);
+        escritorio.moveToFront(fi);
+    }//GEN-LAST:event_jMInscripcionesActionPerformed
+
+    private void jmManipNotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmManipNotActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        CargadeNotas cn = new CargadeNotas();
+        cn.setVisible(true);
+        escritorio.add(cn);
+        escritorio.moveToFront(cn);
+    }//GEN-LAST:event_jmManipNotActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -181,13 +209,13 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMAlum;
     private javax.swing.JMenuItem jMFAlum;
     private javax.swing.JMenuItem jMFmat;
+    private javax.swing.JMenuItem jMInscripciones;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jmManipNot;
     // End of variables declaration//GEN-END:variables
 }

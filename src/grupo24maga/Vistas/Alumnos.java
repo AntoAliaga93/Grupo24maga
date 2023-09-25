@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
  * @author Anto
  */
 public class Alumnos extends javax.swing.JInternalFrame {
+    AlumnoData alu = new AlumnoData();
     public Alumnos() {
         initComponents();
   
@@ -50,10 +51,11 @@ public class Alumnos extends javax.swing.JInternalFrame {
         jTFidAlumno = new javax.swing.JTextField();
         jDFecha = new com.toedter.calendar.JDateChooser();
         jBModif = new javax.swing.JButton();
+        jRefresh = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(102, 153, 255));
 
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Alumno");
 
@@ -158,6 +160,13 @@ public class Alumnos extends javax.swing.JInternalFrame {
             }
         });
 
+        jRefresh.setIcon(new javax.swing.ImageIcon("C:\\Users\\Anto\\Downloads\\boton-de-actualizacion (1).png")); // NOI18N
+        jRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRefreshActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -166,52 +175,65 @@ public class Alumnos extends javax.swing.JInternalFrame {
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(353, 353, 353)
+                                .addComponent(JButton))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLApellido)
+                                    .addComponent(jLNombre)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel1))
+                                .addGap(54, 54, 54)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jDFecha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jTFApellido, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jTFNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jTFDni, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jBEstado, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jTFidAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 45, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jBModif)
                         .addGap(35, 35, 35)
                         .addComponent(jBEliminar)
                         .addGap(38, 38, 38)
-                        .addComponent(jBGuardar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLApellido)
-                            .addComponent(jLNombre)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel1))
-                        .addGap(54, 54, 54)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jDFecha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTFApellido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-                                .addComponent(jTFNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTFDni, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jBEstado, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTFidAlumno)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JButton))
-                .addGap(29, 38, Short.MAX_VALUE))
+                        .addComponent(jBGuardar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel7)
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel7)
+                    .addComponent(jRefresh))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jTFidAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JButton))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(jTFDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jTFidAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jTFDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(20, 20, 20))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(JButton)
+                                .addGap(34, 34, 34)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTFApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLApellido))
@@ -229,7 +251,7 @@ public class Alumnos extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jDFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addGap(46, 46, 46)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBEliminar)
                     .addComponent(jBGuardar)
@@ -262,8 +284,7 @@ public class Alumnos extends javax.swing.JInternalFrame {
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
         int elimXiD = Integer.parseInt(jTFidAlumno.getText());
-        AlumnoData aD = new AlumnoData();
-        aD.eliminarAlumno(elimXiD);
+        alu.eliminarAlumno(elimXiD);
         
     }//GEN-LAST:event_jBEliminarActionPerformed
     
@@ -271,8 +292,7 @@ public class Alumnos extends javax.swing.JInternalFrame {
         boolean encontrado = false;
         try {
             int bpdni = Integer.parseInt(jTFDni.getText());
-            AlumnoData aD = new AlumnoData();
-            Alumno alumnoDni =  aD.buscarAlumnoporDni(bpdni);
+            Alumno alumnoDni =  alu.buscarAlumnoporDni(bpdni);
             if (alumnoDni != null) {
                 mostrarDatosAlumno(alumnoDni);
                 encontrado = true;
@@ -282,8 +302,7 @@ public class Alumnos extends javax.swing.JInternalFrame {
         }
         try{
             int bpid = Integer.parseInt(jTFidAlumno.getText());
-            AlumnoData aD = new AlumnoData();
-            Alumno alumnoId =  aD.buscarAlumno(bpid);
+            Alumno alumnoId =  alu.buscarAlumno(bpid);
              if (alumnoId != null) {
                 mostrarDatosAlumno(alumnoId);
                 encontrado = true;
@@ -299,7 +318,7 @@ public class Alumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jDFechaPropertyChange
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-       AlumnoData alu = new AlumnoData();
+
        //Desde textField
        int dni = Integer.parseInt(jTFDni.getText());
        String Apellido = jTFApellido.getText();
@@ -312,7 +331,7 @@ public class Alumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBModifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModifActionPerformed
-       AlumnoData alu = new AlumnoData();
+
        //buscar alumno
        int bpid = Integer.parseInt(jTFidAlumno.getText());
        Alumno alumno = alu.buscarAlumno(bpid);
@@ -324,6 +343,15 @@ public class Alumnos extends javax.swing.JInternalFrame {
             alu.modificarAlumno(alumno);
        }
     }//GEN-LAST:event_jBModifActionPerformed
+
+    private void jRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRefreshActionPerformed
+         jTFidAlumno.setText("");
+         jTFDni.setText("");
+         jTFApellido.setText("");
+         jTFNombre.setText("");
+         jBEstado.setSelected(false);
+         jDFecha.setDate(null);
+    }//GEN-LAST:event_jRefreshActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JButton;
@@ -342,6 +370,7 @@ public class Alumnos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jRefresh;
     private javax.swing.JTextField jTFApellido;
     private javax.swing.JTextField jTFDni;
     private javax.swing.JTextField jTFNombre;

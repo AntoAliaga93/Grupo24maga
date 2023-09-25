@@ -30,7 +30,14 @@ public class InscripcionData {
                 + "VALUES (?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, insc.getNota());
+            int nota = insc.getNota();
+            if(nota== 0){
+                nota =-1;
+                ps.setNull(1, java.sql.Types.INTEGER); // Establecer como null en la base de datos
+            }else{
+                ps.setInt(1, nota);
+            }
+            
             ps.setInt(2, insc.getAlumno().getIdAlumno());
             ps.setInt(3, insc.getMateria().getIdMateria());
             ps.executeUpdate();

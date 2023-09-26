@@ -308,6 +308,7 @@ public class Alumnos extends javax.swing.JInternalFrame {
                 encontrado = true;
             } 
         }catch(NumberFormatException nf){
+            JOptionPane.showMessageDialog(this, "Debe ingresar enteros");
             jTFDni.setText("");
             jTFidAlumno.setText("");
         }

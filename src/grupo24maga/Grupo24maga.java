@@ -141,7 +141,7 @@ public class Grupo24maga {
     
     //Obtener alumnos
     InscripcionData insc_d = new InscripcionData();
-    List<Alumno> alumno = insc_d.obtenerAlumnosXMateria(1);
+    List<Alumno> alumno = insc_d.obtenerAlumnosXMateria(4);
         for (Alumno alu : alumno) {
             System.out.println("Apellido: "+alu.getApellido()+" "+alu.getNombre());
         }

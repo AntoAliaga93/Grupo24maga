@@ -190,8 +190,8 @@ public class InscripcionData {
     public List<Alumno> obtenerAlumnosXMateria(int idMateria){
         List<Alumno>alumno = new ArrayList<Alumno>();
         String sql = "SELECT a.idAlumno, dni, apellido, a.nombre FROM alumno a JOIN inscripcion i "
-             + " ON i.idAlumno = a.idAlumno JOIN materia m "
-                + " WHERE m.idMateria = ? ";
+             + " ON i.idAlumno = a.idAlumno JOIN materia m ON i.idMateria = m.idMateria  "
+                + " WHERE m.idMateria = ? AND a.activo = 1";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idMateria);

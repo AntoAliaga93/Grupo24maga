@@ -4,14 +4,18 @@ package grupo24maga.Vistas;
 import grupo24maga.AccesoADatos.AlumnoData;
 import grupo24maga.AccesoADatos.InscripcionData;
 import grupo24maga.Entidades.Alumno;
+import grupo24maga.Entidades.Inscripcion;
 import grupo24maga.Entidades.Materia;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
 public class CargadeNotas extends javax.swing.JInternalFrame {
     private DefaultTableModel modelo = new DefaultTableModel();
     AlumnoData alu = new AlumnoData();
+    private Alumno alumnoSelec;
+    private Materia materiaSelec;
     InscripcionData insc_d = new InscripcionData();
     public CargadeNotas() {
         initComponents();
@@ -34,8 +38,8 @@ public class CargadeNotas extends javax.swing.JInternalFrame {
         jcomboAlu = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTabla = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jbGuardar = new javax.swing.JButton();
+        jbSalir = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(102, 153, 255));
 
@@ -46,6 +50,12 @@ public class CargadeNotas extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Seleccione un alumno: ");
+
+        jcomboAlu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcomboAluActionPerformed(evt);
+            }
+        });
 
         jTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -58,17 +68,32 @@ public class CargadeNotas extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTablaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTabla);
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Guardar");
+        jbGuardar.setBackground(new java.awt.Color(255, 255, 255));
+        jbGuardar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jbGuardar.setForeground(new java.awt.Color(0, 0, 0));
+        jbGuardar.setText("Guardar");
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setText("Salir");
+        jbSalir.setBackground(new java.awt.Color(255, 255, 255));
+        jbSalir.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jbSalir.setForeground(new java.awt.Color(0, 0, 0));
+        jbSalir.setText("Salir");
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -78,9 +103,9 @@ public class CargadeNotas extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(jbGuardar)
                         .addGap(70, 70, 70)
-                        .addComponent(jButton2))
+                        .addComponent(jbSalir))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(177, 177, 177)
@@ -108,8 +133,8 @@ public class CargadeNotas extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jbGuardar)
+                    .addComponent(jbSalir))
                 .addContainerGap(63, Short.MAX_VALUE))
         );
 
@@ -127,15 +152,56 @@ public class CargadeNotas extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+
+        int filaSelec = jTabla.getSelectedRow();
+        if(filaSelec!=-1){
+            int idAlum = alumnoSelec.getIdAlumno();
+            int idMat = (Integer)jTabla.getValueAt(filaSelec,0); //idM esta en la primer colum
+            int nota_N = (Integer)jTabla.getValueAt(filaSelec,2);
+            //Acá llamo a mi método
+            insc_d.actualizarNota(idAlum, idMat, nota_N);
+        }else{
+            JOptionPane.showMessageDialog(null, "Debe seleccionar una fila");
+        }
+    }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablaMouseClicked
+        // Tengo que ver si hay una fila seleccionada en la tabla
+        int filaSelec = jTabla.getSelectedRow();
+         if(filaSelec!=-1){
+            int nota = (Integer) jTabla.getValueAt(filaSelec,2); 
+            String newNota = JOptionPane.showInputDialog("Ingrese la nueva nota: ",nota);
+            if(newNota!=null){
+                try{
+                    int nueva = Integer.parseInt(newNota);
+                    //Acá la puedo cambiar en la tabla
+                    jTabla.setValueAt(nueva, filaSelec, 2);
+                }catch(NumberFormatException ex){
+                    JOptionPane.showMessageDialog(null, "Ingrese una nota válida");
+                }
+            }
+         }    
+    }//GEN-LAST:event_jTablaMouseClicked
+
+    private void jcomboAluActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomboAluActionPerformed
+        alumnoSelec = (Alumno)jcomboAlu.getSelectedItem();
+        llenarTabla(alumnoSelec);  
+    }//GEN-LAST:event_jcomboAluActionPerformed
+
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_jbSalirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTabla;
+    private javax.swing.JButton jbGuardar;
+    private javax.swing.JButton jbSalir;
     private javax.swing.JComboBox<Alumno> jcomboAlu;
     // End of variables declaration//GEN-END:variables
     private void cargarCombo(){
@@ -150,17 +216,36 @@ public class CargadeNotas extends javax.swing.JInternalFrame {
         modelo.addColumn("Nota");
         jTabla.setModel(modelo);
     }
-//    public void llenarTabla(Alumno alumnoSelec){
-//    int idAlum = alumnoSelec.getIdAlumno();
-//    List<Materia> matCursadas = insc_d.obtenerMateriasCursadas(idAlum);
-//
-//    //Esto es para borrar las filas que ya existen
-//    modelo.setRowCount(0);
-//    // Itera a través de las materias y agrega cada materia como una fila en la tabla
-//        for (Materia materia : matCursadas) {
-//            Object[] fila = {materia.getIdMateria(), materia.getNombre()};
-//            // Agregar la fila a la tabla
-//            modelo.addRow(fila);
-//        }
-//    }
+    public void llenarTabla(Alumno alumnoSelec){
+   
+    int idAlum = alumnoSelec.getIdAlumno();
+    List<Materia> materiasC = insc_d.obtenerMateriasCursadas(idAlum);
+    //Esto es para borrar las filas que ya existen
+    modelo.setRowCount(0);
+    // Itera a través de las materias y agrega cada materia como una fila en la tabla
+        for (Materia mat : materiasC) {
+           
+            int idMat = mat.getIdMateria();
+            String nombreM = mat.getNombre();
+            int nota = obtenerNota(idAlum, idMat);
+            
+            Object[] fila = {idMat, nombreM, nota};
+            // Agregar la fila a la tabla
+            modelo.addRow(fila);
+        }
+    }
+    
+    public int obtenerNota(int idAlumno, int idMateria){
+        
+        // Obtener las inscripciones del alumno
+        List<Inscripcion> inscripciones = insc_d.obtenerInscripcionesPorAlumno(idAlumno);
+        
+        for (Inscripcion inscripcion : inscripciones) {
+            if (inscripcion.getMateria().getIdMateria() == idMateria) {
+            return inscripcion.getNota();
+            }
+        }
+        return -1; //esto si no encuentra la nota
+    }
+   
 }
